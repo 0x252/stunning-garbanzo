@@ -1,0 +1,27 @@
+{
+  "name": "timestampms",
+  "version": "1.0.0",
+  "description": "for freecodecamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node --watch index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0x252/stunning-garbanzo.git"
+  },
+  "keywords": [
+    "freecodecamp"
+  ],
+  "author": "Wipedlife",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0x252/stunning-garbanzo/issues"
+  },
+  "homepage": "https://github.com/0x252/stunning-garbanzo#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
