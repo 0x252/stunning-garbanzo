@@ -23,10 +23,39 @@ app.get("/", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
+app.use((req,res,next) => {
+  console.log(`${req.ip} ${req.path} ${req.method}`)
+  next()
+})
+app.get("/api/:date?", function(req, res) {
+  let DateTime;
 
-
+  if (!req.params.date?.length) {
+    DateTime = new Date(); 
+  } else { // if exists length
+    const numReg = /^\d+$/
+    if ( numReg.test(req.params.date) )
+      DateTime = new Date(parseInt(req.params.date))
+    else {
+      console.log(`parse ${req.params.date}`)
+      const dateString = req.params.date
+      DateTime = new Date(dateString);
+    } 
+  } // endif
+  //
+  console.log(DateTime)
+  if (DateTime.toString() === "Invalid Date") {
+    return res.json({ error: "Invalid date" });
+  }
+  //
+  res.json({
+    unix: DateTime.getTime(),
+    utc: DateTime.toUTCString(),
+  });
+})
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
