@@ -12,7 +12,7 @@ app.use('/public', express.static(`${process.cwd()}/public`));
 
 /////
 app.use(express.json());
-gapp.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 ////
 
 app.get('/', function(req, res) {
